@@ -14,7 +14,7 @@ import { reactive, ref } from 'vue'
     }
 
     const props = defineProps<tabProps>()
-	  console.log(props.data,'props.data');
+	 	 console.log(props.data,'props.data');
 	
     
     const emit = defineEmits(['chang'])
@@ -30,11 +30,11 @@ import { reactive, ref } from 'vue'
 </script>
 
 <template>
-  <div>
-    <van-tabbar fixed route v-model="active"  @change="onChange">
-      <van-tabbar-item v-for="(item, index) in props.data" :to="item.to" :name="item.name" :key="index" :icon="item.icon">{{item.title}}</van-tabbar-item>
-    </van-tabbar>
-  </div>
+	<div>
+		<van-tabbar fixed route v-model="active"  @change="onChange">
+			<van-tabbar-item v-for="(item, index) in props.data" :to="item.to" :name="item.name" :key="index" :icon="item.icon">{{item.title}}</van-tabbar-item>
+		</van-tabbar>
+	</div>
 </template>
 
 
