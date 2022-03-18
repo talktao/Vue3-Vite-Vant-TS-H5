@@ -1,10 +1,8 @@
 import { createStore } from "vuex";
 
 const store = createStore({
-    state: {
-       
+    state: {  
         isLoading: false,
-        
         userNmae: "vue3.0开发H5模板"
     },
     getters: {
