@@ -47,6 +47,12 @@ html {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.text-again-center {
+      text-align: center;
+}
+.flex-column{
+      flex-direction: column;
+}
 @each $key, $val in $fontSizeS {
   .fs-#{$key} {
         font-size: #{$val};
@@ -144,7 +150,7 @@ html {
         border-radius: #{$val};
   }
 }
-//.opation-75 {opacity: 0.75}
+//.opacity-75 {opacity: 0.75}
 @for $index from 0 through 4 {
   .opacity-#{$index * 25} {
         opacity: #{$index * 0.25};
