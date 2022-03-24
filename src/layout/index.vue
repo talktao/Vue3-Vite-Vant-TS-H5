@@ -13,7 +13,7 @@ const useTabBar = () => {
 				icon: 'home-o'
 			},
 			{
-				title: '我的',
+				title: '我',
 				to: {
 					name:'About'
 				},
