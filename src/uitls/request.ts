@@ -16,12 +16,12 @@ class HttpRequest {
     private readonly withCredentials: boolean;
     private readonly timeout: number;
     constructor() {
+        //获取当前环境的api地址
         this.baseURL = import.meta.env.VITE_BASE_URL as string;
-        console.log(this.baseURL,'this.baseURL');
-        
         this.withCredentials = true;
         this.timeout = 1000 * 60;
     }
+    //初始化get请求
     getInitConfig(): AxiosRequestConfig {
         return {
             baseURL: this.baseURL,
