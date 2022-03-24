@@ -3,13 +3,12 @@ import { createStore } from "vuex";
 const store = createStore({
     state: {  
         isLoading: false,
-        userNmae: "vue3.0开发H5模板"
+        userNmae: ""
     },
     getters: {
     
     },
-    mutations: {
-        
+    mutations: {    
         changeIsLoading(state, val) {
             state.isLoading = val;
         },
