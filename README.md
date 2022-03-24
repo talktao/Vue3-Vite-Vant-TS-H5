@@ -2,11 +2,11 @@
 
 基于Vue3 + Vite + Vant + Sass+ rem适配方案 + Axios封装，构建手机端模板脚手架 
 
-项目地址：[github](https://github.com/talktao/Vue3-Vite-Vant-TS-H5)
+掘金：[Vue3 Vite vant rem 移动端框架方案](https://github.com/talktao/Vue3-Vite-Vant-TS-H5)
 
 ### Node 版本要求
 
-`Vue CLI` 需要 Node.js 12.0.0 或更高版本 (推荐 14.0.0+)。你可以使用 [nvm](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fnvm-sh%2Fnvm "https://github.com/nvm-sh/nvm") 或 [nvm-windows](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fcoreybutler%2Fnvm-windows "https://github.com/coreybutler/nvm-windows") 在同一台电脑中管理多个 Node 版本。
+`Vite` 需要 Node.js 12.0.0 或更高版本 (推荐 14.0.0+)。你可以使用 [nvm](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fnvm-sh%2Fnvm "https://github.com/nvm-sh/nvm") 或 [nvm-windows](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fcoreybutler%2Fnvm-windows "https://github.com/coreybutler/nvm-windows") 在同一台电脑中管理多个 Node 版本。
 
 本示例 Node.js 14.18.1
 
@@ -43,8 +43,6 @@ npm run dev
 - [配置 proxy 跨域](#%E9%85%8D%E7%BD%AE-proxy-%E8%B7%A8%E5%9F%9F)
 - [Eslint+Pettier 统一开发规范](#eslintpettier-%E7%BB%9F%E4%B8%80%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83)
 - [批量全局注册公共组件](#%E6%89%B9%E9%87%8F%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C%E5%85%AC%E5%85%B1%E7%BB%84%E4%BB%B6)
-- [总结](#%E6%80%BB%E7%BB%93)
-- [关于我](#%E5%85%B3%E4%BA%8E%E6%88%91)
 
 ## rem适配方案
 
@@ -67,7 +65,7 @@ yarn add vite-plugin-style-import -D
 复制代码
 ```
 
-在 `vite.config.js` 设置
+在 `vite.config.ts` 设置
 
 ```
 import vue from '@vitejs/plugin-vue';
@@ -84,7 +82,7 @@ export default {
 
 ```
 
-但是每次页面使用的时候还是要引入，很麻烦，项目在 `src/plugins/vant.js` 下统一管理组件，无需在main.ts文件中多次use()
+但是每次页面使用的时候还是要引入，很麻烦，项目在 `src/plugins/vant.ts` 下统一管理组件，无需在main.ts文件中多次use()
 
 ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c28b1a79944746dda06ef85413dcbb77~tplv-k3u1fbpfcp-watermark.image?)
 
@@ -147,11 +145,11 @@ import '@/assets/css/index.scss'
 
 ```
 ├── store
-│   ├── index.js
+│   ├── index.ts
 复制代码
 ```
 
-`main.js` 引入
+`main.ts` 引入
 
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2f97c5e86024cc48998e610ea9045e9~tplv-k3u1fbpfcp-watermark.image?)
 
@@ -355,10 +353,6 @@ export default {
   }
 }
 ```
-
-## 总结
-
-[项目github地址](https://github.com/talktao/Vue3-Vite-Vant-TS-H5)
 
 ## 关于我
 
