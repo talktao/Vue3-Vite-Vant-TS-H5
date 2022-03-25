@@ -169,7 +169,7 @@ import '@/assets/css/index.scss'
 
 ## Vue-router
 
-本案例采用 `history` 模式，开发者根据需求修改 `mode` `base`
+本案例采用 `hash` 模式，开发者根据需求修改 `mode` `base`
 
 #### 自动化导入路由
 ```js
