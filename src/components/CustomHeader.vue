@@ -1,3 +1,9 @@
+<script lang="ts">
+export default{
+    name: 'CustomHeader'
+}
+</script>
+
 <script setup lang="ts">
     import { ref } from 'vue'
     import { useRoute, useRouter } from 'vue-router'

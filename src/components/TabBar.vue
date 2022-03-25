@@ -1,3 +1,8 @@
+<script lang="ts">
+export default{
+    name: 'TabBar'
+}
+</script>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
@@ -22,7 +27,7 @@ import { reactive, ref } from 'vue'
     const active = ref('home')
 
     const onChange = (value) => {	
-		console.log(value,'value');
+		// console.log(value,'value');
 		
         emit('chang', value)   
     }
@@ -36,8 +41,6 @@ import { reactive, ref } from 'vue'
 		</van-tabbar>
 	</div>
 </template>
-
-
 
 <style lang="scss" scoped>
 
