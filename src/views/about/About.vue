@@ -2,6 +2,8 @@
 	import { computed } from 'vue'
 	import { useStore } from 'vuex'
 
+	import logo from '@/assets/logo.png'
+
 	const store = useStore()
 
 	const  userName  = computed(() => store.state.userNmae)
@@ -18,10 +20,10 @@
 		<div class="wrapper">
 			<div class="list flex-center py-8 flex-column">
 				<span class="logo">
-					<img width="150" src="@/assets/logo.png" />
+					<van-image width="150" :src="logo" />
 				</span>
 				<span class="logo fs-1 py-3 opacity-75">VUE3 H5开发模板</span>
-				<span class="fs-5 py-3 opacity-75">
+				<span class="fs-6 py-3 opacity-75">
 					项目地址：
 					<a href="https://github.com/talktao/Vue3-Vite-Vant-TS-H5">https://github.com/talktao/Vue3-Vite-Vant-TS-H5</a>
 				</span>

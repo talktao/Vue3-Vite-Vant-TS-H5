@@ -1,6 +1,7 @@
 <script setup lang="ts">
 	import { computed, reactive, ref, toRefs } from 'vue'
-	import { useRoute, useRouter } from 'vue-router'
+	
+	import logo from '@/assets/logo.png'
 
 	const useShowList = () => {
 		const state = reactive({
@@ -40,7 +41,7 @@
 		<CustomHeader title="首页" />
 		<div class="py-3 px-3">
 			<div class="title py-2 flex-start align-items-center">
-				<img width="36" src="@/assets/logo.png" />
+				<van-image width="36" :src="logo" />
 				<span class="fs-1 px-5">Vue3+TS H5开发模板</span>
 			</div>
 			<div class="subTitle px-3 fs-3 opacity-50">
