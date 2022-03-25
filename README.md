@@ -1,8 +1,18 @@
-## 描述
+## Vue3-Vite-Vant-TS-H5
 
 基于Vue3 + Vite + Vant + Sass+ rem适配方案 + Axios封装，构建手机端模板脚手架 
 
-掘金：[Vue3 Vite vant rem 移动端框架方案](https://github.com/talktao/Vue3-Vite-Vant-TS-H5)
+### 预览
+
+[查看 demo](https://talktao.github.io/Vue3-Vite-Vant-TS-H5) 建议手机端查看
+
+### 关注我的掘金
+
+掘金：[Vue3 Vite Vant TS rem 移动端H5框架方案](https://github.com/talktao/Vue3-Vite-Vant-TS-H5)
+
+### 贡献代码
+
+使用过程中发现任何问题都可以提Issue 给我，也非常欢迎 PR 或 Pull Request
 
 ### Node 版本要求
 
