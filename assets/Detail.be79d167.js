@@ -1,0 +1,1 @@
+import{p as r,u as s,s as a,r as n,o as u,z as c,t as l,G as p,x as d,M as m}from"./vendor.a41f5cd1.js";const x=r({setup(f){const e=s();console.log(e,"route");let t=a(0);return t=e.params.id,(i,_)=>{const o=n("CustomHeader");return u(),c("div",null,[l(o,{title:"\u8BE6\u60C5",leftIcon:"arrow-left",leftText:""}),p(" \u8BE6\u60C5id\u4E3A:"+d(m(t)),1)])}}});export{x as default};
