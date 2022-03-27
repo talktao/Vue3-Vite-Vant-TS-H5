@@ -8,7 +8,7 @@
 
 ### 关注我的掘金
 
-掘金：[Vue3 Vite Vant TS rem 移动端H5框架方案](https://github.com/talktao/Vue3-Vite-Vant-TS-H5)
+掘金：[Vue3 Vite Vant TS rem 移动端H5框架方案](https://juejin.cn/post/7078877401626705957)
 
 ### 贡献代码
 
