@@ -7,7 +7,7 @@ export default{
 <script setup lang="ts">
     import { ref } from 'vue'
     import { useRoute, useRouter } from 'vue-router'
-
+    
     interface topTitleProps {
         title?: string,
         leftIcon?: string,
@@ -46,9 +46,9 @@ export default{
 <template>
     <van-sticky>
         <van-nav-bar :title="title" @click-left="clickLeft" @click-right="clickRight" left-arrow>
-            <template #left> <van-icon :color="color" size="20" :name="leftIcon" /><span :style="{color}">{{ leftText }}</span> </template>
+            <template #left> <van-icon :color="color" size="20" :name="leftIcon" /><span :style="color">{{ leftText }}</span> </template>
             <template @click-right="onClickRight" #right>
-                <span :style="{color}">{{ rightText }}</span>
+                <span :style="color">{{ rightText }}</span>
             </template>
         </van-nav-bar>
     </van-sticky>

@@ -8,7 +8,6 @@ export default {
             let curComponent = modules[componentPath]?.default 
 
             app.component(curComponent.name, curComponent);
-  
         })
     }
    
