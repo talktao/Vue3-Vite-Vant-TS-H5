@@ -1,9 +1,10 @@
 import { createStore } from "vuex";
+import { createPinia } from "pinia"
 
-const store = createStore({
+export const vuexStore = createStore({
     state: {  
         isLoading: false,
-        userNmae: ""
+        userName: ""
     },
     getters: {
     
@@ -14,7 +15,7 @@ const store = createStore({
         },
 
         getUserNmae(state,data) {
-            state.userNmae = data
+            state.userName = data
         }
        
     },
@@ -23,4 +24,6 @@ const store = createStore({
     },
     modules: {},
 });
-export default store;
+
+
+export const piniaStore = createPinia()
