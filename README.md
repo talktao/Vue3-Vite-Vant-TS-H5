@@ -1,3 +1,9 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Vue3-Vite-Vant-TS-H5
 
 基于Vue3 + Vite + Vant + Sass+ rem适配方案 + Axios封装，构建手机端模板脚手架 
@@ -41,6 +47,14 @@ npm run dev
     - [父组件改变子组件样式 深度选择器](#%E7%88%B6%E7%BB%84%E4%BB%B6%E6%94%B9%E5%8F%98%E5%AD%90%E7%BB%84%E4%BB%B6%E6%A0%B7%E5%BC%8F-%E6%B7%B1%E5%BA%A6%E9%80%89%E6%8B%A9%E5%99%A8)
     - [全局变量](#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F)
 - [Vuex 状态管理](#vuex-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86)
+- [Pinia 状态管理](#pinia-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86)
+  - [1.安装](#1%E5%AE%89%E8%A3%85)
+  - [2. 创建Pinia的Store](#2-%E5%88%9B%E5%BB%BApinia%E7%9A%84store)
+  - [3.在main.ts文件中引用](#3%E5%9C%A8maints%E6%96%87%E4%BB%B6%E4%B8%AD%E5%BC%95%E7%94%A8)
+  - [3. 定义State](#3-%E5%AE%9A%E4%B9%89state)
+    - [i. 传统的`options API`方式](#i-%E4%BC%A0%E7%BB%9F%E7%9A%84options-api%E6%96%B9%E5%BC%8F)
+    - [ii.Vue3 `setup`的编程模式](#iivue3-setup%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F)
+  - [4.获取/修改 state](#4%E8%8E%B7%E5%8F%96%E4%BF%AE%E6%94%B9-state)
 - [Vue-router](#vue-router)
     - [自动化导入路由](#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5%E8%B7%AF%E7%94%B1)
     - [普通设置](#%E6%99%AE%E9%80%9A%E8%AE%BE%E7%BD%AE)
@@ -161,12 +175,92 @@ import '@/assets/css/index.scss'
 
 `main.ts` 引入
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2f97c5e86024cc48998e610ea9045e9~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/da02c7b06866460e9e16c1d119841c3a~tplv-k3u1fbpfcp-watermark.image?)
 
 使用
 
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d3c89ca73a042e29b688a0bde39572f~tplv-k3u1fbpfcp-watermark.image?)
 
+## Pinia 状态管理
+### 1.安装
+`node版本需>=14.0.0`
+```js
+yarn add pinia 
+# or with npm 
+npm install pinia
+```
+### 2. 创建Pinia的Store
+在`src/store/index.ts` 文件中，导出 piniaStore
+```js
+// src/store/index.ts
+
+import { createPinia } from 'pinia'
+
+export const piniaStore = createPinia()
+```
+### 3.在main.ts文件中引用
+
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/02880b30dc264402a2385dbf3596d65b~tplv-k3u1fbpfcp-watermark.image?)
+### 3. 定义State
+在`src/store`目录下新建有个`testPinia.ts`文件
+
+#### i. 传统的`options API`方式
+```js
+import { defineStore } from "pinia"
+export const usePiniaState = defineStore({
+    id: 'textPinia',
+    state: () => {
+        return {
+            userName: ''
+        }
+    },
+    getters: {
+
+    },
+    actions: {
+        getUserNmae(data) {
+            this.userName = data
+        }
+    }
+})
+```
+
+#### ii.Vue3 `setup`的编程模式
+```js
+import { ref } from 'vue'
+import { defineStore } from "pinia"
+export const usePiniaState = defineStore('pinia', ()=>{
+    const userName = ref('')
+    // 修改userName的方法
+    const getUserNmae = (data) => {
+        userName.value = data
+    }
+    return { userName, getUserNmae}
+})
+```
+
+### 4.获取/修改 state
+
+```js
+<script setup lang="ts">
+	import { storeToRefs  } from 'pinia'
+	import { usePiniaState } from '@/store/testPinia'
+        
+	// pinia
+	const piniaStore = usePiniaState()
+        
+	// 通过storeToRefs方法将存储在pinia里的数据解构出来，保持state响应性
+	const { userName } = storeToRefs(piniaStore)
+	const { getUserNmae } = piniaStore
+	
+
+        const handleBtn = () =>{
+            // pinia
+            getUserNmae('真乖，如果对您有帮助请在github上点个星星哦~')
+        }
+
+</script>
+```
 ## Vue-router
 
 本案例采用 `hash` 模式，开发者根据需求修改 `mode` `base`
