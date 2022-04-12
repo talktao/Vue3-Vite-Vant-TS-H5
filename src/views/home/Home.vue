@@ -26,15 +26,6 @@
 	}
 	const { list }  = useShowList()
 
-
-	
-
-    // const store = useStore()
-    // const name = computed(() => store.state.userNmae)
-    // const handleBtn = () =>{
-    //   store.commit('getUserNmae', 'Vue')
-    // }
-
 </script>
 
 <template>
@@ -50,9 +41,7 @@
 			</div>
 		</div>
 		<div class="py-5">
-			<van-list
-				finished-text="没有更多了"
-				>
+			<van-list finished-text="没有更多了">
 				<van-cell v-for="(item, index) in list" :key="index" :title="item.title" icon="success" />
 			</van-list>
 		</div>

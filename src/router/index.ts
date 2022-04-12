@@ -14,8 +14,6 @@ const childRoutes = Object.keys(viewRouterModules).map((path)=>{
 	} 
 })
 
-console.log(childRoutes,'childRouter');
-
 // 根路由
 const rootRoutes = Object.keys(mainRouterModules).map((path) => {
     const name = path.match(/\.\.\/layout\/(.*)\.vue$/)[1].toLowerCase();
@@ -32,8 +30,6 @@ const rootRoutes = Object.keys(mainRouterModules).map((path) => {
 })
 
 const routes: Array<RouteRecordRaw> = rootRoutes
-
-
 
 const router = createRouter({
     history: createWebHashHistory(),
