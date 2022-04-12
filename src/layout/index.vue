@@ -32,17 +32,17 @@ const handleChange = (value) => {
 </script>
 
 <template>
-  <div class="app-container">
-    <div class="layout-content">
-      <keep-alive v-if="$route.meta.keepAlive">
-        <router-view></router-view>
-      </keep-alive>
-      <router-view v-else></router-view>
-    </div>
-    <div class="layout-footer">
-      <TabBar :data="tabBar" @chang="handleChange"></TabBar>
-    </div>
-  </div>
+	<div class="app-container">
+		<div class="layout-content">
+		<keep-alive v-if="$route.meta.keepAlive">
+			<router-view></router-view>
+		</keep-alive>
+		<router-view v-else></router-view>
+		</div>
+		<div class="layout-footer">
+			<TabBar :data="tabBar" @chang="handleChange"></TabBar>
+		</div>
+	</div>
 </template>
 
 <style lang="scss" scoped>
