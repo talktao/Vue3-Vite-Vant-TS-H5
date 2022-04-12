@@ -11,6 +11,7 @@
 				{title: 'VantUI 组件按需加载'},
 				{title: 'Sass 全局样式'},
 				{title: 'Vuex 状态管理'},
+				{title: 'Pinia 状态管理'},
 				{title: 'Axios 封装及接口管理'},
 				{title: 'Vue-router'},
 				{title: 'vite.config.ts 基础配置'},
