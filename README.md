@@ -457,6 +457,29 @@ export default {
   }
 }
 ```
+上面的批量全局注册公共组件在本地启动中正常，但是上生产打包后，会有问题，具体是__file该组件路径找不到，可以修改成如下代码：
+``` js
+  
+const modules = import.meta.globEager('../components/*.vue')
+
+export default {
+  install(app) {
+      Object.keys(modules).forEach(componentPath => {
+
+          // 获取遍历的当前组件实例对象
+          let curComponent = modules[componentPath]?.default 
+
+          app.component(curComponent.name, curComponent);
+      })
+  }
+ 
+}
+
+```
+### 注意：
+由于sfc语法糖没有携带组件的name属性，上面的curComponent.name会报curComponent下没有name属性，此时需要在注册的公共组件中加上如下代码，比如在src/components/CustomHeader.vue中加上如下代码，这样组件的实例对象中就会有name属性
+
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9dc96c132b3642628c1a8cbb84d6c865~tplv-k3u1fbpfcp-watermark.image?)
 
 ## 关于我
 
