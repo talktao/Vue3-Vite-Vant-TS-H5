@@ -10,7 +10,7 @@ export default defineConfig(({ command, mode }) => {
 	return {
 
 		// 静态资源基础路径 base: './' || '',
-		base: '/Vue3-Vite-Vant-TS-H5/',
+		base: '',
 
 		resolve: {
 			alias: {
