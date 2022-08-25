@@ -1,45 +1,23 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Vue3-Vite-Vant-TS-H5
-
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
+    branches:
+      - main
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout 🛎️ # 将代码拉取到虚拟机
         uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v1
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+
+      - name: Install and Build 🔧 # 安装依赖、打包，如果提前已打包好无需这一步
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy 🚀 # 部署
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
-          # Upload entire repository
-          path: 'Vue3-Vite-Vant-TS-H5'
           branch: gh-pages # 部署后提交到那个分支
           folder: dist # 这里填打包好的目录名称
-          REPOSITORY_NAME: talktao/talktao.github.io # 这是我的 github page 仓库
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
