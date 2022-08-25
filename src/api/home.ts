@@ -1,5 +1,5 @@
-import axiosInstance, { AxiosResponseProps } from '@/uitls/request'
+import axiosInstance, { AxiosResponseProps } from '@/uitls/request';
 
-export const getList = (params: any) => {
-	return axiosInstance.get("/common/code/logisticsInfo/getOrderByPhone", { params: params || {} });
-}
+export const getList = (params?: any) => {
+	return axiosInstance.get("http://yapi.smart-xwork.cn/mock/60279/bear/tabs", { params: params || {} });
+};
