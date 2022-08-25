@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Vue3-Vite-Vant-TS-H5
 
 on:
   # Runs on pushes targeting the default branch
@@ -36,9 +36,11 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: '.'
+          # path: '.'
           branch: gh-pages # 部署后提交到那个分支
           folder: dist # 这里填打包好的目录名称
+          REPOSITORY_NAME: talktao/talktao.github.io # 这是我的 github page 仓库
+          TARGET_FOLDER: Vue3-Vite-Vant-TS-H5 # 打包的文件将放到静态服务器 github-actions-demo 目录下
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
