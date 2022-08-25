@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout 🛎️ # 将代码拉取到虚拟机
         uses: actions/checkout@v3
-         with:
-          persist-credentials: false
 
       - name: Install and Build 🔧 # 安装依赖、打包，如果提前已打包好无需这一步
         run: |
@@ -23,5 +21,5 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
-          REPOSITORY_NAME: talktao/talktao.github.io # 这是我的 github page 地址
-          TARGET_FOLDER: Vue3-Vite-Vant-TS-H5 # 打包的文件将放到静态服务器 Vue3-Vite-Vant-TS-H5 目录下
+          # REPOSITORY_NAME: talktao/talktao.github.io # 这是我的 github page 地址
+          # TARGET_FOLDER: Vue3-Vite-Vant-TS-H5 # 打包的文件将放到静态服务器 Vue3-Vite-Vant-TS-H5 目录下
