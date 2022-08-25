@@ -1,29 +1,29 @@
 import { createStore } from "vuex";
-import { createPinia } from "pinia"
+import { createPinia } from "pinia";
 
 export const vuexStore = createStore({
-    state: {  
+    state: {
         isLoading: false,
         userName: ""
     },
     getters: {
-    
+
     },
-    mutations: {    
+    mutations: {
         changeIsLoading(state, val) {
             state.isLoading = val;
         },
 
-        getUserNmae(state,data) {
-            state.userName = data
+        getUserNmae(state, data) {
+            state.userName = data;
         }
-       
+
     },
     actions: {
-        
+
     },
     modules: {},
 });
 
 
-export const piniaStore = createPinia()
+export const piniaStore = createPinia();
