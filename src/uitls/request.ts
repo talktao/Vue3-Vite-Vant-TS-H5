@@ -1,8 +1,8 @@
 /** 
  *  @author TalkTao
  * @description  接口封装
-*/ 
-import store from "@/store/index";
+*/
+import { vuexStore } from "@/store/index";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, Method } from "axios";
 export interface AxiosResponseProps {
     code?: number;
@@ -32,12 +32,35 @@ class HttpRequest {
     interceptors(instance: AxiosInstance) {
         let requestList = [];
         const setLoadingToFalse = response => {
+
             requestList
                 .filter(item => item.url == response.config.url && item.method == response.config.method)
                 .forEach(item => (item.isLoading = false));
+
             //所有请求都加载完才让加载提示消失
-            if (requestList.every(item => !item.isLoading)) store.commit("changeIsLoading", false);
+            if (requestList.every(item => !item.isLoading)) vuexStore.commit("changeIsLoading", false);
+
         };
+
+        instance.interceptors.request.use(
+            (config: any) => {
+
+                let ignoreLoadingUrls = ["/login"];
+
+                if (!ignoreLoadingUrls.includes(config.url)) {
+
+                    if (requestList.length < 10) {
+                        requestList.unshift({ ...config, isLoading: true });
+                    } else {
+                        requestList = [...requestList.slice(0, 9), { ...config, isLoading: true }];
+                    }
+                    vuexStore.commit("changeIsLoading", true);
+                }
+                return config;
+            },
+            error => Promise.reject(error + '请求错误')
+        );
+
         instance.interceptors.response.use(
             response => {
                 setLoadingToFalse(response);
@@ -45,7 +68,7 @@ class HttpRequest {
             },
             error => {
                 if (error.response.status == 301) {
-                    store.commit("changeLoginModalVisible", true);
+                    vuexStore.commit("changeLoginModalVisible", true);
                 }
                 setLoadingToFalse(error);
                 return Promise.reject(error.response?.data);
