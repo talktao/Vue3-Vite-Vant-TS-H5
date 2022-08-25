@@ -1,41 +1,26 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
-
-on:
+name: vue3-vite-vant-ts-h5
+on: # 监听 master 分支上的 push 事件
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    branches:
+      - master
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+  build-and-deploy:
+    runs-on: ubuntu-latest # 构建环境使用 ubuntu
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Checkout
+        uses: actions/checkout@v2.3.1  
+        with:
+          persist-credentials: false
 
-  deploy:
-    - name: Deploy
-    uses: JamesIves/github-pages-deploy-action@3.5.9 # 使用别人写好的 actions
-        with:  # 自定义环境变量
-          ACCESS_TOKEN: ${{ secrets.VUE3_TOKEN }} # VUE3_TOKEN  是我的 secret 名称，需要替换成你的
-          BRANCH: gh-pages
-          FOLDER: dist
-          REPOSITORY_NAME: talktao/talktao.github.io # 这是我的 github page 仓库
-          TARGET_FOLDER: vue3-vite-vant-ts-h5 # 打包的文件将放到静态服务器  vue3-vite-vant-ts-h5 目录下
+      - name: Install and Build # 下载依赖 打包项目
+        run: |
+          npm install
+          npm run build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.5.9 # 使用别人写好的 actions
+          with:  # 自定义环境变量
+            ACCESS_TOKEN: ${{ secrets.VUE3_TOKEN }} # VUE3_TOKEN  是我的 secret 名称，需要替换成你的
+            BRANCH: gh-pages
+            FOLDER: dist
+            REPOSITORY_NAME: talktao/talktao.github.io # 这是我的 github page 仓库
+            TARGET_FOLDER: vue3-vite-vant-ts-h5 # 打包的文件将放到静态服务器  vue3-vite-vant-ts-h5 目录下
