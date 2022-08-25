@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "live-server ./ --port=8081"
+    "server": "live-server ./ --port=8081",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "axios": "^0.26.1",
