@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          # path: '.'
+          path: '.'
           branch: gh-pages # 部署后提交到那个分支
           folder: dist # 这里填打包好的目录名称
           REPOSITORY_NAME: talktao/talktao.github.io # 这是我的 github page 仓库
