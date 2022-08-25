@@ -25,6 +25,7 @@ const useShowList = () => {
   return toRefs(state);
 };
 const { list } = useShowList();
+console.log(list, "list");
 
 // 请求真实数据
 const get = async () => {
