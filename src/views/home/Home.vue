@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, toRefs } from "vue";
-import { getList } from "@/api/home";
+import { getTest } from "@/api/home";
 import logo from "@/assets/logo.png";
 
 const useShowList = () => {
@@ -27,12 +27,15 @@ const useShowList = () => {
 const { list } = useShowList();
 
 // 请求真实数据
-const get = async () => {
-  const result = await getList();
+const getTestData = async () => {
+  let params = {
+    modules: "statisGradeCityDetail",
+  };
+  const result = await getTest(params);
 };
 
 onMounted(() => {
-  get();
+  getTestData();
 });
 </script>
 

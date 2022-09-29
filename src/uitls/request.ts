@@ -30,21 +30,21 @@ class HttpRequest {
         };
     }
     interceptors(instance: AxiosInstance) {
+
+        // 定义存放请求接口数组
         let requestList = [];
         const setLoadingToFalse = response => {
-
             requestList
                 .filter(item => item.url == response.config.url && item.method == response.config.method)
                 .forEach(item => (item.isLoading = false));
 
             //所有请求都加载完才让加载提示消失
             if (requestList.every(item => !item.isLoading)) vuexStore.commit("changeIsLoading", false);
-
         };
 
         instance.interceptors.request.use(
             (config: any) => {
-
+                // 不用判断请求loading的路由
                 let ignoreLoadingUrls = ["/login"];
 
                 if (!ignoreLoadingUrls.includes(config.url)) {
@@ -67,9 +67,7 @@ class HttpRequest {
                 return response.data;
             },
             error => {
-                if (error.response.status == 301) {
-                    vuexStore.commit("changeLoginModalVisible", true);
-                }
+                if (error.response.status == 301) { }
                 setLoadingToFalse(error);
                 return Promise.reject(error.response?.data);
             }
